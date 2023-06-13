@@ -47,7 +47,8 @@ def delete_empty_folder(path:Path) ->None:
 
 
 def unpack_archive(path:Path) ->None:
-    shutil.unpack_archive(path)
+    destination_dir = path.parent
+    shutil.unpack_archive(path,destination_dir)
     
     
 
