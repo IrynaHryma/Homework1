@@ -15,8 +15,7 @@ def move_file(file:Path,root_dir:Path, categorie:str) ->None:
     if not target_dir.exists():
         print(f"Make{target_dir}")
         target_dir.mkdir()
-    # print(path.suffix)    
-    # print(target_dir.joinpath(f"{normalize(path.stem)}{path.suffix}"))
+    
 
     file.replace(target_dir.joinpath(f"{normalize(file.stem)}{file.suffix}"))
 
