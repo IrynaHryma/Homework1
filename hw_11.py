@@ -7,8 +7,9 @@ import shutil
 
 CATEGORIES = {"Audio":['.mp4','.aiff'],
               "Documents":['.doc','.txt','.pdf'],
-              "Images": ['.jpg','jpeg']
-              }
+              "Images": ['.jpg','jpeg'],
+               "Archives":['.stem']
+               }
 
 def move_file(file:Path,root_dir:Path, categorie:str) ->None:
     target_dir = root_dir.joinpath(categorie)
@@ -46,8 +47,9 @@ def delete_empty_folder(path:Path) ->None:
 
 
 def unpack_archive(path:Path) ->None:
-    destination_dir = path.parent
-    shutil.unpack_archive(path,destination_dir)
+    destination_dir = path.joinpath("Archives")
+    for i in destination_dir.glob('*'):
+        shutil.unpack_archive(i,destination_dir.joinpath(i.stem))
     
     
 
